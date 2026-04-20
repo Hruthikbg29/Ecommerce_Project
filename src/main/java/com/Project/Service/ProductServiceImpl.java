@@ -27,7 +27,36 @@ public class ProductServiceImpl implements ProductService {
 	public Product getProductById(Long id) {	
 		return repository.findById(id).orElseThrow(()-> new RuntimeException("Product not found"));
 	}
+	
+	
+	
 
+	@Override
+	public Product updateProduct(Long id, Product product) {
+		Product dbProduct = repository.findById(id).orElseThrow(()-> new RuntimeException("Product Not found"));
+		
+		dbProduct.setName(product.getName());
+		dbProduct.setDescription(product.getDescription());
+		dbProduct.setPrice(product.getPrice());
+		dbProduct.setStock(product.getStock());
+		dbProduct.setImageUrl(product.getImageUrl());
+		dbProduct.setCategory(product.getCategory());
+		
+		return repository.save(dbProduct);
+	}
+
+	@Override
+	public List<Product> searchByName(String name) {
+		
+		return repository.findByNameContainingIgnoreCase(name);
+	}
+
+	@Override
+	public List<Product> getByCategory(Long categoryId) {
+		
+		return repository.findByCategoryId(categoryId);
+	}
+	
 	public void deleteProduct(Long id) {
 		repository.deleteById(id);
 		

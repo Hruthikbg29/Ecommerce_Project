@@ -64,10 +64,10 @@ public class Product {
 	public Integer getStock() {
 		return stock;
 	}
-
-	public void setStock(Integer stock) {
-		this.stock = stock;
-	}
+	
+	public Integer setStock(Integer stock) {
+          return this.stock = stock;
+      }
 
 	public String getImageUrl() {
 		return imageUrl;
