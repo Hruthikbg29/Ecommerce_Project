@@ -9,7 +9,7 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name ="product")
+@Table(name = "product")
 public class Product {
 
 	@Id
@@ -20,13 +20,13 @@ public class Product {
 	private Double price;
 	private Integer stock;
 	private String imageUrl;
-	
+
 	@ManyToOne
 	@JoinColumn(name = "category_id")
 	private Category category;
-	
+
 	public Product() {
-		
+
 	}
 
 	public Long getId() {
@@ -64,10 +64,10 @@ public class Product {
 	public Integer getStock() {
 		return stock;
 	}
-	
+
 	public Integer setStock(Integer stock) {
-          return this.stock = stock;
-      }
+		return this.stock = stock;
+	}
 
 	public String getImageUrl() {
 		return imageUrl;
@@ -84,7 +84,5 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-	
-	
-	
+
 }
