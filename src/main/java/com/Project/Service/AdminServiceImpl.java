@@ -15,7 +15,6 @@ public class AdminServiceImpl implements AdminService{
 	private final UserRepository userRepository;
 	
 	public AdminServiceImpl(AdminRepository adminRepository, UserRepository userRepository) {
-		super();
 		this.adminRepository = adminRepository;
 		this.userRepository = userRepository;
 	}
@@ -32,6 +31,10 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public String login(String email, String password) {
 		Optional<Admin> optionalAdmin = adminRepository.findByEmail(email);
+		
+		if(userRepository.existsByEmail(email)) {
+			return "This Email belongs to User";
+		}
 		
 		if(optionalAdmin.isEmpty()) {
 			return "Admin not found";
