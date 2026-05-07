@@ -1,5 +1,7 @@
 package com.Project.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,6 +25,7 @@ public class Product {
 
 	@ManyToOne
 	@JoinColumn(name = "category_id")
+	@JsonIgnoreProperties({"products","hibernateLazyInitializer","handler"})
 	private Category category;
 
 	public Product() {

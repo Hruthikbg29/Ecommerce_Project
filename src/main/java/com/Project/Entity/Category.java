@@ -1,9 +1,14 @@
 package com.Project.Entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.Data;
 
 @Entity
@@ -16,5 +21,10 @@ public class Category {
 	
 	private String name;
 	private String description;
+	
+	@OneToMany(mappedBy =  "category")
+	@JsonIgnoreProperties({"category"})
+	
+	private List<Product> products;
 	
 }
